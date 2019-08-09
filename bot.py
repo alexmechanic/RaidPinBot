@@ -6,16 +6,19 @@
 # @raidpinbot
 #
 
-import telebot, re
+import telebot, re, os
 from telebot import types
 from logger import get_logger
 
 log = get_logger("bot")
 
-with open("TOKEN", "r") as tfile:
-    TOKEN = tfile.readline().strip('\n')
-    print("read token: '%s'" % TOKEN)
-    tfile.close()
+try:
+    with open("TOKEN", "r") as tfile: # local run
+        TOKEN = tfile.readline().strip('\n')
+        print("read token: '%s'" % TOKEN)
+        tfile.close()
+except FileNotFoundError: # Heroku run
+    TOKEN = os.getenv('TOKEN')
 
 bot = telebot.TeleBot(TOKEN)
 
