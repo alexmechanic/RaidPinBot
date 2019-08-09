@@ -1,0 +1,5 @@
+2019-08-09 23:39:42 — [bot] (DEBUG): Delected potential raid message:
+2019-08-09 23:39:42 — [bot] (DEBUG): {'message_id': 28, 'from': {'id': 187678932, 'is_bot': False, 'first_name': 'Alex', 'username': 'alex1489', 'language_code': 'ru'}, 'chat': {'id': -1001253138700, 'title': 'AUTOPIN DEBUG', 'type': 'supergroup'}, 'date': 1565383182, 'text': 'sdsds\n\u200b', 'entities': [{'offset': 0, 'length': 5, 'type': 'bold'}], 'reply_markup': {'inline_keyboard': [[{'text': '💤', 'callback_data': 'vote:6ggLhZVSYkj:Thinking'}, {'text': '✖', 'callback_data': 'vote:6ggLhZVSYkj:Cancel'}, {'text': '🌐', 'switch_inline_query': 'share:6ggLhZVSYkj'}]]}}
+2019-08-09 23:39:42 — [bot] (DEBUG): Raid message confirmed, pinning
+2019-08-09 23:39:42 — [bot] (DEBUG): Message pinned: sdsds
+​
