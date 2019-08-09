@@ -9,6 +9,7 @@
 import telebot, re, os, time
 from telebot import types
 from logger import get_logger
+from flask import Flask, request
 
 log = get_logger("bot")
 
@@ -21,8 +22,20 @@ except FileNotFoundError: # Heroku run
     TOKEN = os.environ['TOKEN']
 
 bot = telebot.TeleBot(TOKEN)
+server = Flask(__name__)
 
 BOT_USERNAME = "raidpinbot"
+
+@server.route('/' + TOKEN, methods=['POST'])
+def getMessage():
+    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    return "!", 200
+
+@server.route("/")
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url='https://' + BOT_USERNAME + '.herokuapp.com/' + TOKEN)
+    return "!", 200
 
 #
 # Bot should pin only raid messages (assume they should have reply_markup keyboard)
@@ -49,4 +62,5 @@ def check_raidmessage(m):
     else:
         log.error("Not a raid message, skipping")
 
-bot.polling(none_stop=True, interval=0, timeout=20)
+server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
+# bot.polling(none_stop=True, interval=0, timeout=20)
