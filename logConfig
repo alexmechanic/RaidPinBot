@@ -1,0 +1,29 @@
+[loggers]
+keys=root
+
+[handlers]
+keys=file,stdout
+
+[formatters]
+keys=formatter0
+
+[handler_stdout]
+class=StreamHandler
+level=DEBUG
+formatter=formatter0
+args=(sys.stdout,)
+
+[handler_file]
+class=handlers.TimedRotatingFileHandler
+level=DEBUG
+formatter=formatter0
+args=('logs/RaidPinBot.log','midnight',)
+
+[formatter_formatter0]
+format=%(asctime)s — [%(name)s] (%(levelname)s): %(message)s
+datefmt=%Y-%m-%d %H:%M:%S
+
+[logger_root]
+level=DEBUG
+handlers=file,stdout
+qualname=bot
