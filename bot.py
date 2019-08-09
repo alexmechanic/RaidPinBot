@@ -18,7 +18,7 @@ try:
         print("read token: '%s'" % TOKEN)
         tfile.close()
 except FileNotFoundError: # Heroku run
-    TOKEN = os.getenv('TOKEN')
+    TOKEN = os.environ['TOKEN']
 
 bot = telebot.TeleBot(TOKEN)
 
