@@ -6,7 +6,7 @@
 # @raidpinbot
 #
 
-import telebot, re, os
+import telebot, re, os, time
 from telebot import types
 from logger import get_logger
 
@@ -43,6 +43,7 @@ def check_raidmessage(m):
                 is_raid = True
     if is_raid:
         log.debug("Raid message confirmed, pinning")
+        time.sleep(1)
         bot.pin_chat_message(m.chat.id, m.message_id)
         log.debug("Message pinned: %s" % m.text)
     else:
