@@ -62,5 +62,5 @@ def check_raidmessage(m):
     else:
         log.error("Not a raid message, skipping")
 
-server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
+server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 8443)))
 # bot.polling(none_stop=True, interval=0, timeout=20)
