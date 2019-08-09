@@ -26,8 +26,8 @@ BOT_USERNAME = "raidpinbot"
 #
 @bot.message_handler(func=lambda message: 'reply_markup' in message.json)
 def check_raidmessage(m):
-    log.debug("Delected potential raid message")
-    log.debug(str(m))
+    log.debug("Delected potential raid message:")
+    log.debug(str(m.json))
     is_raid = False
     # series of conditions to detect @RaidBattlesBot inline raid message
     rep_mkup = m.json['reply_markup']
@@ -41,7 +41,8 @@ def check_raidmessage(m):
     if is_raid:
         log.debug("Raid message confirmed, pinning")
         bot.pin_chat_message(m.chat.id, m.message_id)
-        log.debug("Message pinned: '%s'" % m.text)
-    log.error("Not a raid message, skipping")
+        log.debug("Message pinned: %s" % m.text)
+    else:
+        log.error("Not a raid message, skipping")
 
 bot.polling(none_stop=True, interval=0, timeout=20)
