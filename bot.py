@@ -28,7 +28,7 @@ BOT_USERNAME = 'raidpinbot'
 
 @bot.message_handler(commands=['start', 'help'])
 def command_starthelp(m):
-    log.debug("User %s used command %s" % (m.user.username, m.text))
+    log.debug("User %s used command %s" % (m.from_user.username, m.text))
     text = "Приветствую! 👋\n" + \
            "Я - бот-автопиннер сообщений о рейдах для игры 🎮 *Pokemon GO*.\n" + \
            "Для моей активации добавьте меня в игровой чат.\n\n" + \
