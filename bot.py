@@ -28,6 +28,7 @@ BOT_USERNAME = 'raidpinbot'
 
 @bot.message_handler(commands=['start', 'help'])
 def command_starthelp(m):
+    log.debug("User %s used command %s" % (m.user.username, m.text))
     text = "Приветствую! 👋\n" + \
            "Я - бот-автопиннер сообщений о рейдах для игры 🎮 *Pokemon GO*.\n" + \
            "Для моей активации добавьте меня в игровой чат.\n\n" + \
@@ -40,7 +41,7 @@ def command_starthelp(m):
 #
 @bot.message_handler(func=lambda message: 'reply_markup' in message.json)
 def check_raidmessage(m):
-    log.debug("Delected potential raid message:")
+    log.debug("Detected potential raid message:")
     log.debug(str(m.json))
     is_raid = False
     # series of conditions to detect @RaidBattlesBot inline raid message
