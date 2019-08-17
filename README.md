@@ -19,7 +19,7 @@
 - Переменные окружения:
   * HEROKU=1
   * FLASK_ENV=development 
-  * TOKEN=<your-bot-private-token>
+  * TOKEN=**your-bot-private-token**
 
 ### Прочие особенности
 
